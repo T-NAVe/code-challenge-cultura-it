@@ -1,8 +1,9 @@
-import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Loading from '../../components/Loading'
 import Modal from '../../components/Modal'
 import { useModal } from '../../hooks/useModal'
 import { useUser } from '../../hooks/useUser'
+import { getAvatar } from '../../utils'
 import './styles.css'
 
 export default function User () {
@@ -12,18 +13,7 @@ export default function User () {
   const { showModal: showTable, handleModalClick: handleTableClick } = useModal()
 
   if (loading) {
-    return (
-      <div className='loading'>
-        <div className='wrapper'>
-          <div className='circle' />
-          <div className='circle' />
-          <div className='circle' />
-          <div className='shadow' />
-          <div className='shadow' />
-          <div className='shadow' />
-        </div>
-      </div>
-    )
+    return <Loading />
   }
   return (
     <div style={{ height: '100%' }} className='container'>
@@ -36,12 +26,12 @@ export default function User () {
                 <div className='media-left'>
                   <div className='card-image'>
                     <figure className='image is-64x64'>
-                      <img src={`https://avatars.dicebear.com/api/initials/${user.username}.svg`} alt={user.username} />
+                      <img src={getAvatar(user.username)} alt={user.username} />
                     </figure>
                   </div>
                 </div>
                 <div className='media-content'>
-                  <h2 className='title is-2'>{user.username}</h2>
+                  <h2 className='title is-5'>{user.username}</h2>
                   <p className='subtitle is-6'>{user.email}</p>
                 </div>
               </div>

@@ -11,21 +11,25 @@ async function getLastAlbumPhoto (userId) {
 }
 
 export default async function getUserProfileData (id) {
-  const user = await getUser(id)
-  const posts = await getUserPosts(id)
-  console.log(posts)
-  const postComments = await getPostComments(lastItem(posts).id)
-  const latestPostComment = lastItem(postComments)
-  const lastAlbumPhoto = await getLastAlbumPhoto(id)
-  const todos = await getUserTodos(id)
+  try {
+    const user = await getUser(id)
+    const posts = await getUserPosts(id)
+    console.log(posts)
+    const postComments = await getPostComments(lastItem(posts).id)
+    const latestPostComment = lastItem(postComments)
+    const lastAlbumPhoto = await getLastAlbumPhoto(id)
+    const todos = await getUserTodos(id)
 
-  const userData = {
-    user,
-    lastAlbumPhoto,
-    latestPost: lastItem(posts),
-    latestPostComment,
-    todosToComplete: todos.filter(todo => todo.completed === false),
-    todos
+    const userData = {
+      user,
+      lastAlbumPhoto,
+      latestPost: lastItem(posts),
+      latestPostComment,
+      todosToComplete: todos.filter(todo => todo.completed === false),
+      todos
+    }
+    return userData
+  } catch (error) {
+    return { error }
   }
-  return userData
 }
