@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Loading from '../../components/Loading'
 import Modal from '../../components/Modal'
 import { useModal } from '../../hooks/useModal'
@@ -105,7 +105,7 @@ export default function User () {
               </div>
             </div>
             <footer>
-              <button className='button is-dark button-is-medium'>View All Posts</button>
+              <Link to={`/posts/${id}`} className='button is-dark button-is-medium'>View All Posts</Link>
             </footer>
           </div>
         </div>

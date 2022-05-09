@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useParams } from 'react-router-dom'
 import Loading from '../../components/Loading'
 import Modal from '../../components/Modal'
 import { useModal } from '../../hooks/useModal'
-import getAllPostsWithUsers from '../../services/getAllPostsWithUsers'
+import { getAllPostsWithUsers, getUserPostsWithUsers } from '../../services/getPostsWithUsers'
 import { getPostComments } from '../../services/getData'
 import { getAvatar } from '../../utils'
 import './styles.css'
 
 export default function Posts () {
+  const { id } = useParams()
+
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   const [loadingComments, setLoadingComments] = useState(true)
@@ -17,7 +19,7 @@ export default function Posts () {
   const { showModal, handleModalClick } = useModal()
 
   const handleClick = (post) => {
-    if (post.id === postForModal.id && postForModal?.comments?.length) {
+    if (post.id === postForModal.id && postForModal.comments?.length) {
       handleModalClick()
     } else {
       setLoadingComments(true)
@@ -34,15 +36,26 @@ export default function Posts () {
   }
 
   useEffect(() => {
-    !posts.length && getAllPostsWithUsers().then(posts => {
-      setPosts(posts)
-      setPostForModal(posts[0])
-      setLoading(false)
-    }).catch(error => {
-      console.log(error)
-      if (error) navigate('/404-not-found')
-    })
-  }, [postForModal])
+    if (id) {
+      !posts.length && getUserPostsWithUsers(id).then(posts => {
+        setPosts(posts)
+        setPostForModal(posts[0])
+        setLoading(false)
+      }).catch(error => {
+        console.log(error)
+        if (error) navigate('/404-not-found')
+      })
+    } else {
+      !posts.length && getAllPostsWithUsers().then(posts => {
+        setPosts(posts)
+        setPostForModal(posts[0])
+        setLoading(false)
+      }).catch(error => {
+        console.log(error)
+        if (error) navigate('/404-not-found')
+      })
+    }
+  }, [])
 
   if (loading) {
     return <Loading />

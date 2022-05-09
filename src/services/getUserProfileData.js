@@ -14,7 +14,6 @@ export default async function getUserProfileData (id) {
   try {
     const user = await getUser(id)
     const posts = await getUserPosts(id)
-    console.log(posts)
     const postComments = await getPostComments(lastItem(posts).id)
     const latestPostComment = lastItem(postComments)
     const lastAlbumPhoto = await getLastAlbumPhoto(id)

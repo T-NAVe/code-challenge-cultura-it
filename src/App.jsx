@@ -8,7 +8,13 @@ function App () {
   return (
     <div className='App'>
       <header>
-        <h1>App 🐱‍👤</h1>
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? 'nav-active' : undefined
+          }} to='/'
+        >
+          <h1>App 🐱‍👤</h1>
+        </NavLink>
         <nav>
           <ul>
             <li>
@@ -37,6 +43,7 @@ function App () {
         <Route exact path='/user/:id/' element={<User />} />
         <Route exact path='/albums' element={<Albums />} />
         <Route exact path='/' element={<Posts />} />
+        <Route exact path='/posts/:id/' element={<Posts />} />
         <Route path='*' element={<h1>Not Found</h1>} />
       </Routes>
     </div>
