@@ -24,7 +24,8 @@ export default async function getUserProfileData (id) {
     lastAlbumPhoto,
     latestPost: lastItem(posts),
     latestPostComment,
-    todosToComplete: todos.filter(todo => todo.completed === false)
+    todosToComplete: todos.filter(todo => todo.completed === false),
+    todos
   }
   return userData
 }
