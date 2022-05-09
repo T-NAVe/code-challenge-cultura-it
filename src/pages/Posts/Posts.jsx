@@ -46,8 +46,8 @@ export default function Posts () {
         if (error) navigate('/404-not-found')
       })
     } else {
-      !posts.length && getAllPostsWithUsers().then(posts => {
-        setPosts(posts)
+      getAllPostsWithUsers().then(posts => {
+        setPosts(prev => posts)
         setPostForModal(posts[0])
         setLoading(false)
       }).catch(error => {
@@ -55,13 +55,18 @@ export default function Posts () {
         if (error) navigate('/404-not-found')
       })
     }
-  }, [])
+  }, [id])
 
   if (loading) {
     return <Loading />
   }
   return (
     <>
+      <header className='header'>
+        <div className='container'>
+          <h1>{id ? `${posts[0].username} posts` : 'Watching all posts'}</h1>
+        </div>
+      </header>
       <div className='post_wrapper'>
         {posts.length && posts.map(post => (
           <div onClick={e => handleClick(post)} className='post box p-4 m-4 is-clickable' key={post.id}>
