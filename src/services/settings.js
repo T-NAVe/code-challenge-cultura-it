@@ -5,4 +5,4 @@
  */
 
 export const API_URL = 'https://jsonplaceholder.typicode.com'
-export const AVATAR_RUL = 'https://avatars.dicebear.com/api/initials/'
+export const AVATAR_RUL = 'https://avatars.dicebear.com/api/micah/'
