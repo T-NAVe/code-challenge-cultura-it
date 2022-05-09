@@ -8,6 +8,7 @@
   --cp-white: #EEEEEE;
 }
 
+
 body {
   background-color: var(--cp-black);
   color: var(--cp-white);
@@ -22,4 +23,36 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+header {
+  display:flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #fafafa;
+}
+
+nav ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+nav ul li{
+  padding: 1rem;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-active{
+  color: rgb(35, 58, 161);
+  pointer-events: none;
+}
+.prevent-scroll{
+  position: fixed;
+  overflow-y: hidden;
 }
