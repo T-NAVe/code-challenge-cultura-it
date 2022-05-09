@@ -49,7 +49,7 @@ export default function Posts () {
   }
   return (
     <>
-      <div className={showModal ? 'prevent-scroll' : 'post_wrapper'}>
+      <div className='post_wrapper'>
         {posts.length && posts.map(post => (
           <div onClick={e => handleClick(post)} className='post box p-4 m-4 is-clickable' key={post.id}>
             <div className='container'>
@@ -92,7 +92,7 @@ export default function Posts () {
             </div>
           </div>
           {loadingComments
-            ? <></>
+            ? <Loading isLightMode />
             : (
               <div className='table-container'>
                 <h3 className='title ml-3 is-4'>comments</h3>

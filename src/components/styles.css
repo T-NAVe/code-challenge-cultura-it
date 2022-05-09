@@ -5,7 +5,10 @@
   height: 100%;
   min-height: 100vmin;
 }
-
+.small{
+  height: 100%;
+  min-height: 300px;
+}
 .wrapper {
   width: 200px;
   height: 60px;
@@ -22,6 +25,10 @@
   left: 15%;
   transform-origin: 50%;
   animation: circle7124 .5s alternate infinite ease;
+}
+
+.black{
+  background-color: black;
 }
 
 @keyframes circle7124 {
