@@ -1,4 +1,9 @@
+// use with useModal hook like shown below
+/*
+const { showModal, handleModalClick } = useModal()
 
+<Modal showModal={showModal} toggleModal={handleModalClick} isCard>{children}<Modal />
+*/
 export default function Modal ({ children, showModal, toggleModal, isCard = false, cardTitle = '' }) {
   return (
     <div className={showModal ? 'modal is-active' : 'modal'}>
