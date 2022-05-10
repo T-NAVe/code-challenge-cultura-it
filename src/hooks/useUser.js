@@ -26,7 +26,7 @@ export function useUser ({ id }) {
       setLoading(false)
       setTodos(todos)
     })
-  }, [])
+  }, [id])
 
   return ({ user, lastAlbumPhoto, latestPost, todosToComplete, latestPostComment, loading, todos })
 }

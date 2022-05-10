@@ -86,7 +86,7 @@ export default function Posts () {
         ))}
       </div>
       {
-      postForModal && (
+      showModal && (
         <Modal cardTitle={`${postForModal.username} posted`} showModal={showModal} toggleModal={handleModalClick} isCard>
           <div className='columns'>
             <div className='column is-one-quarter media'>
@@ -141,7 +141,6 @@ export default function Posts () {
                 </table>
               </div>
               )}
-
         </Modal>
       )
       }

@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  min-height: 100vmin;
+  min-height: 100vh;
 }
 .small{
   height: 100%;

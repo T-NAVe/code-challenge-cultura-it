@@ -5,7 +5,8 @@ export function useModal () {
 
   const handleModalClick = () => {
     // need to do this with javascript, since does not work as intended
-    // document.body.toggleAttribute('prevent-scroll')
+    document.querySelector('html').classList.toggle('prevent-scroll')
+    // document.html.classList.toggle('prevent-scroll', showModal)
     setShowModal(prev => !prev)
   }
 

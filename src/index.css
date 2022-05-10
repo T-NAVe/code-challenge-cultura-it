@@ -54,6 +54,5 @@ a{
   pointer-events: none;
 }
 .prevent-scroll{
-  position: fixed;
   overflow-y: hidden;
 }
