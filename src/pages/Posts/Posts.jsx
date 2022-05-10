@@ -91,14 +91,14 @@ export default function Posts () {
           <div className='columns'>
             <div className='column is-one-quarter media'>
               <div className='card-image'>
-                <Link to={`/user/${postForModal.userId}`}>
+                <Link onClick={handleModalClick} to={`/user/${postForModal.userId}`}>
                   <figure className='image is-64x64'>
                     <img src={getAvatar(postForModal.username)} alt={postForModal.username} />
                   </figure>
                 </Link>
               </div>
               <div className='media-content'>
-                <Link to={`/user/${postForModal.userId}`}>
+                <Link onClick={handleModalClick} to={`/user/${postForModal.userId}`}>
                   <h2 className='title is-5'>{postForModal.username}</h2>
                   <p className='subtitle is-6'>{postForModal.email}</p>
                 </Link>
