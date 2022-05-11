@@ -7,6 +7,7 @@ import { getAllPostsWithUsers, getUserPostsWithUsers } from '../../services/getP
 import { getPostComments } from '../../services/getData'
 import { getAvatar } from '../../utils'
 import './styles.css'
+import Header from '../../components/Header'
 
 export default function Posts () {
   const { id } = useParams()
@@ -17,6 +18,7 @@ export default function Posts () {
   const [posts, setPosts] = useState([])
   const [postForModal, setPostForModal] = useState([])
   const { showModal, handleModalClick } = useModal()
+  const [sorted, setSorted] = useState(false)
 
   const handleClick = (post) => {
     if (post.id === postForModal.id && postForModal.comments?.length) {
@@ -35,6 +37,18 @@ export default function Posts () {
     }
   }
 
+  const handleFilter = () => {
+    if (!sorted) {
+      const sortedPosts = posts.sort((a, b) => b.id - a.id)
+      setSorted(true)
+      setPosts(prev => sortedPosts)
+    } else {
+      const sortedPosts = posts.sort((a, b) => a.id - b.id)
+      setSorted(false)
+      setPosts(prev => sortedPosts)
+    }
+  }
+
   useEffect(() => {
     if (id) {
       !posts.length && getUserPostsWithUsers(id).then(posts => {
@@ -46,8 +60,8 @@ export default function Posts () {
         if (error) navigate('/404-not-found')
       })
     } else {
-      getAllPostsWithUsers().then(posts => {
-        setPosts(prev => posts)
+      !posts.length && getAllPostsWithUsers().then(posts => {
+        setPosts(posts)
         setPostForModal(posts[0])
         setLoading(false)
       }).catch(error => {
@@ -55,18 +69,14 @@ export default function Posts () {
         if (error) navigate('/404-not-found')
       })
     }
-  }, [id])
+  }, [id, sorted])
 
   if (loading) {
     return <Loading />
   }
   return (
     <>
-      <header className='header'>
-        <div className='container'>
-          <h1>{id ? `${posts[0].username} posts` : 'Watching all posts'}</h1>
-        </div>
-      </header>
+      <Header id={id} username={posts[0].username} typeOfPage='posts' handleFilter={handleFilter} sorted={sorted} />
       <div className='post_wrapper'>
         {posts.length && posts.map(post => (
           <div onClick={e => handleClick(post)} className='post box p-4 m-4 is-clickable' key={post.id}>
