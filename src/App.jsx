@@ -33,7 +33,7 @@ function App () {
                 className={({ isActive }) => {
                   return isActive ? 'nav-active' : undefined
                 }}
-                to='/allAlbums'
+                to='/all-albums'
               >Albums
               </NavLink>
             </li>
@@ -43,7 +43,7 @@ function App () {
       </header>
       <Routes>
         <Route exact path='/user/:id/' element={<User />} />
-        <Route exact path='/allAlbums' element={<Albums />} />
+        <Route exact path='/all-albums' element={<Albums />} />
         <Route exact path='/' element={<Posts />} />
         <Route exact path='/posts/:id/' element={<Posts />} />
         <Route exact path='/albums/:id/' element={<Albums />} />
