@@ -1,3 +1,4 @@
-.white{
-  color: var(--cp-white) !important;
+.album-photos{
+  display: block;
 }
+
