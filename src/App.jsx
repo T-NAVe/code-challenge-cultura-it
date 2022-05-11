@@ -1,6 +1,7 @@
 import { Routes, Route, NavLink } from 'react-router-dom'
 import './App.css'
 import Albums from './pages/Albums/Albums'
+import NotFound from './pages/NotFound/NotFound'
 import Posts from './pages/Posts/Posts'
 import User from './pages/User/User'
 
@@ -46,7 +47,7 @@ function App () {
         <Route exact path='/' element={<Posts />} />
         <Route exact path='/posts/:id/' element={<Posts />} />
         <Route exact path='/albums/:id/' element={<Albums />} />
-        <Route path='*' element={<h1>Not Found</h1>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   )

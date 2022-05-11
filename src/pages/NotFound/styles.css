@@ -1,0 +1,11 @@
+.not-found-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+}
+.not-found{
+  font-size: xx-large;
+  font-weight: 900;
+}
