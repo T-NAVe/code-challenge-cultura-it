@@ -56,3 +56,6 @@ a{
 .prevent-scroll{
   overflow-y: hidden;
 }
+.modal-close{
+  background-color: black;
+}
