@@ -67,3 +67,11 @@ export async function getUserPosts (id) {
     return data
   } catch (error) { console.log(error) }
 }
+
+export async function getAllAlbums () {
+  try {
+    const res = await window.fetch(`${API_URL}/albums`)
+    const data = await res.json()
+    return data
+  } catch (error) { console.log(error) }
+}
