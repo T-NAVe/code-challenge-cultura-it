@@ -25,11 +25,10 @@ export async function getAllPostsWithUsers () {
 export async function getUserPostsWithUsers (id) {
   const posts = await getUserPosts(id)
 
-  const users = []
+  const user = await getUser(id)
+  const { username, email } = user
 
-  const postsWithUserName = await Promise.all(posts.map(async (post) => {
-    users.includes(post.userId) && users.push(post.userId)
-    const { username, email } = await getUser(post.userId)
+  const postsWithUserName = posts.map((post) => {
     const posts = {
       ...post,
       username,
@@ -37,7 +36,6 @@ export async function getUserPostsWithUsers (id) {
     }
     return posts
   })
-  )
 
   return postsWithUserName
 }
