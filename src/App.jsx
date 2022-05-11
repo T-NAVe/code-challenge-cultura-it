@@ -32,18 +32,20 @@ function App () {
                 className={({ isActive }) => {
                   return isActive ? 'nav-active' : undefined
                 }}
-                to='/albums'
+                to='/allAlbums'
               >Albums
               </NavLink>
             </li>
+
           </ul>
         </nav>
       </header>
       <Routes>
         <Route exact path='/user/:id/' element={<User />} />
-        <Route exact path='/albums' element={<Albums />} />
+        <Route exact path='/allAlbums' element={<Albums />} />
         <Route exact path='/' element={<Posts />} />
         <Route exact path='/posts/:id/' element={<Posts />} />
+        <Route exact path='/albums/:id/' element={<Albums />} />
         <Route path='*' element={<h1>Not Found</h1>} />
       </Routes>
     </div>
